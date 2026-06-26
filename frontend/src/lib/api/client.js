@@ -1,7 +1,12 @@
 import axios from 'axios';
 
+let apiBaseUrl = import.meta.env.PUBLIC_API_BASE_URL || 'http://localhost:5000/api/v1';
+if (typeof apiBaseUrl === 'string') {
+  apiBaseUrl = apiBaseUrl.replace(/^['"]|['"]$/g, '').trim();
+}
+
 const client = axios.create({
-  baseURL: import.meta.env.PUBLIC_API_BASE_URL || 'http://localhost:5000/api/v1',
+  baseURL: apiBaseUrl,
   headers: {
     'Content-Type': 'application/json'
   }
